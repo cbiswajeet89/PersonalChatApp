@@ -4,17 +4,17 @@ FROM node:20-alpine
 # Set the working directory inside the container
 WORKDIR /usr/src/app
 
-# Copy the package.json files from the local-chat folder first
-COPY local-chat/package*.json ./
+# 1. Copy the package.json files from the ROOT folder
+COPY package*.json ./
 
-# Install the dependencies
+# 2. Install the dependencies (this will finally install Express & Socket.io)
 RUN npm install
 
-# Copy the rest of the local-chat folder contents into the container
+# 3. Copy your app code from inside the local-chat folder
 COPY local-chat/ ./
 
 # Expose port 3000
 EXPOSE 3000
 
-# Start the server (it will now correctly find server.js)
+# Start the server
 CMD ["node", "server.js"]
