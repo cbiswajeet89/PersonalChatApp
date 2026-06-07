@@ -18,4 +18,5 @@ COPY . .
 EXPOSE 3000
 
 # Start the server
+CMD ["cd", "local-chat"]
 CMD ["node", "server.js"]
